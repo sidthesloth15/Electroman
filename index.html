@@ -1,1 +1,68 @@
-,<!DOCTYPE html>%0A<html lang="en">%0A<head>%0A%20%20%20%20<meta charset="UTF-8">%0A%20%20%20%20<meta name="viewport" content="width=device-width, initial-scale=1.0">%0A%20%20%20%20<title>Electro Man</title>%0A%20%20%20%20<style>%0A%20%20%20%20%20%20%20%20body%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color:%20black;%0A%20%20%20%20%20%20%20%20%20%20%20%20color:%20white;%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align:%20center;%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family:%20Arial,%20sans-serif;%0A%20%20%20%20%20%20%20%20}%0A%20%20%20%20%20%20%20%20canvas%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20border:%202px%20solid%20white;%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color:%20#222;%0A%20%20%20%20%20%20%20%20}%0A%20%20%20%20</style>%0A</head>%0A<body>%0A%20%20%20%20<h1>Electro Man</h1>%0A%20%20%20%20<canvas%20id="gameCanvas"%20width="800"%20height="400"></canvas>%0A%20%20%20%20<script>%0A%20%20%20%20%20%20%20%20const%20canvas%20=%20document.getElementById("gameCanvas");%0A%20%20%20%20%20%20%20%20const%20ctx%20=%20canvas.getContext("2d");%0A%0A%20%20%20%20%20%20%20%20class%20ElectroMan%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20constructor()%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20this.x%20=%20100;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20this.y%20=%20200;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20this.width%20=%2030;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20this.height%20=%2050;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20this.speed%20=%205;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20this.color%20=%20"blue";%0A%20%20%20%20%20%20%20%20%20%20%20%20}%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20move(direction)%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(direction%20===%20'left')%20this.x%20-=%20this.speed;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(direction%20===%20'right')%20this.x%20+=%20this.speed;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(direction%20===%20'up')%20this.y%20-=%20this.speed;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(direction%20===%20'down')%20this.y%20+=%20this.speed;%0A%20%20%20%20%20%20%20%20%20%20%20%20}%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20draw()%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20=%20this.color;%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillRect(this.x,%20this.y,%20this.width,%20this.height);%0A%20%20%20%20%20%20%20%20%20%20%20%20}%0A%20%20%20%20%20%20%20%20}%0A%0A%20%20%20%20%20%20%20%20const%20player%20=%20new%20ElectroMan();%0A%20%20%20%20%20%20%20%20function%20gameLoop()%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20ctx.clearRect(0,%200,%20canvas.width,%20canvas.height);%0A%20%20%20%20%20%20%20%20%20%20%20%20player.draw();%0A%20%20%20%20%20%20%20%20%20%20%20%20requestAnimationFrame(gameLoop);%0A%20%20%20%20%20%20%20%20}%0A%0A%20%20%20%20%20%20%20%20document.addEventListener("keydown",%20(event)%20=>%20{%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(event.key%20===%20"ArrowLeft")%20player.move("left");%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(event.key%20===%20"ArrowRight")%20player.move("right");%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(event.key%20===%20"ArrowUp")%20player.move("up");%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(event.key%20===%20"ArrowDown")%20player.move("down");%0A%20%20%20%20%20%20%20%20});%0A%0A%20%20%20%20%20%20%20%20gameLoop();%0A%20%20%20%20</script>%0A</body>%0A</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electro Man</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 2px solid white;
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electro Man</h1>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        class ElectroMan {
+            constructor() {
+                this.x = 100;
+                this.y = 200;
+                this.width = 30;
+                this.height = 50;
+                this.speed = 5;
+                this.color = "blue";
+            }
+
+            move(direction) {
+                if (direction === 'left') this.x -= this.speed;
+                if (direction === 'right') this.x += this.speed;
+                if (direction === 'up') this.y -= this.speed;
+                if (direction === 'down') this.y += this.speed;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+
+        const player = new ElectroMan();
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            player.draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft") player.move("left");
+            if (event.key === "ArrowRight") player.move("right");
+            if (event.key === "ArrowUp") player.move("up");
+            if (event.key === "ArrowDown") player.move("down");
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>
+
